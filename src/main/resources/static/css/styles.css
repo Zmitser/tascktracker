@@ -1,0 +1,159 @@
+body {
+    padding-top: 62px;
+}
+
+body, html {
+    height: 100%;
+}
+
+/* workaround modal-open padding issue */
+body.modal-open {
+    padding-right: 0 !important;
+}
+
+#sidebar {
+    padding-left: 0;
+}
+body {
+    background: #eee !important;
+}
+
+.wrapper {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.form-signin {
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 30px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.btn{
+    margin:10px 0;
+}
+
+/*
+ * Off Canvas at medium breakpoint
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 48em) {
+
+    .row-offcanvas {
+        position: relative;
+        -webkit-transition: all 0.25s ease-out;
+        -moz-transition: all 0.25s ease-out;
+        transition: all 0.25s ease-out;
+    }
+
+    .row-offcanvas-left
+    .sidebar-offcanvas {
+        left: -33%;
+    }
+
+    .row-offcanvas-left.active {
+        left: 33%;
+    }
+
+    .sidebar-offcanvas {
+        position: absolute;
+        top: 0;
+        width: 33%;
+        height: 100%;
+    }
+}
+
+/*
+ * Off Canvas wider at sm breakpoint
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 34em) {
+    .row-offcanvas-left,
+    .sidebar-offcanvas {
+        left: -45%;
+    }
+
+    .row-offcanvas-left.active {
+        left: 45%;
+    }
+
+    .sidebar-offcanvas {
+        width: 45%;
+
+    }
+}
+
+/* responsive nav stacked liked 3.x */
+@media (max-width: 34em) {
+    .navbar .navbar-brand {
+        float: none;
+        display: block;
+    }
+
+    .navbar .navbar-nav > .nav-item {
+        float: none;
+        margin-left: .1rem;
+    }
+
+    .navbar .navbar-nav {
+        float: none !important;
+    }
+}
+.card-wrapper{
+    margin: 20px;
+}
+.card {
+    overflow: hidden;
+}
+
+.card-block .rotate {
+    z-index: 8;
+    float: right;
+    height: 100%;
+}
+
+.card-block .rotate i {
+    color: rgba(20, 20, 20, 0.15);
+    position: absolute;
+    left: 0;
+    left: auto;
+    right: -10px;
+    bottom: 0;
+    display: block;
+    -webkit-transform: rotate(-44deg);
+    -moz-transform: rotate(-44deg);
+    -o-transform: rotate(-44deg);
+    -ms-transform: rotate(-44deg);
+    transform: rotate(-44deg);
+}

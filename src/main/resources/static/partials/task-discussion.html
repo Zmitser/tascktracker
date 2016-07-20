@@ -1,0 +1,49 @@
+<div ng-controller="CommentController">
+    <div ng-init="allComments()">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" ng-repeat="comment in comments">
+                    <div class="panel panel-white post panel-shadow">
+                        <div class="post-heading">
+                            <div class="pull-left image">
+                                <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar"
+                                     alt="user profile image">
+                            </div>
+                            <div class="pull-left meta">
+                                <div class="title h5">
+                                    <a href="#"><b>{{comment.task.user.username}}</b></a>
+                                    made a post.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-description">
+                            <p>{{comment.text}}</p>
+                            <div class="stats">
+                                <a href="#/comment/{{comment.commentId}}"  class="btn btn-primary btn-xs">Edit</a>
+                                <button ng-click="deleteComment(comment.commentId)" class="btn btn-danger btn-xs">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="widget-area no-padding blank">
+                        <div class="status-upload">
+                            <p>{{credentials.username}}</p>
+                            <form ng-submit="postComment()">
+                                <input type="hidden" ng-model="comment.task.taskId">
+                                <textarea ng-model="comment.text" placeholder="What are you doing right now?"></textarea>
+                                <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i>Comment</button>
+                            </form>
+                        </div><!-- Status Upload  -->
+                    </div><!-- Widget Area -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

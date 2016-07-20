@@ -1,0 +1,20 @@
+<div class="card-wrapper" ng-controller="ProjectController">
+    <div ng-init="getProject()">
+        <form name="myForm" ng-submit="saveProject()">
+            <input type="hidden" name="projectId" ng-model="project.projectId" value="0">
+            <fieldset class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="username" ng-model="project.name" class="form-control" id="name"
+                       placeholder="Enter task name">
+                <small class="text-muted">Please, enter project name.</small>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" ng-model="project.description" name="description" id="description"
+                          rows="3"></textarea>
+                <small class="text-muted">Please, enter description.</small>
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

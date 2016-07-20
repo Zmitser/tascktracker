@@ -1,0 +1,47 @@
+<div class="card-wrapper" ng-controller="TaskController">
+    <div ng-init="getTask()">
+        <form name="myForm" ng-submit="saveTask()">
+            <input type="hidden" name="taskId" ng-model="task.taskId" value="0">
+            <fieldset class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="username" ng-model="task.name" class="form-control" id="name"
+                       placeholder="Enter task name">
+                <small class="text-muted">Please, enter task name.</small>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="description">Example textarea</label>
+                <textarea class="form-control" ng-model="task.description" name="description" id="description"
+                          rows="3"></textarea>
+                <small class="text-muted">Please, enter task description.</small>
+            </fieldset>
+            <fieldset class="form-group" ng-controller="ManagerController">
+                <label for="exampleSelect2">Assign</label>
+                <select
+                        ng-init="allUsers()"
+                        ng-model="task.user.userId"
+                        class="form-control"
+                        id="exampleSelect2"
+                        ng-options="user.userId as user.username for user in users">
+
+                </select>
+                <small class="text-muted">Please, choose project.</small>
+            </fieldset>
+            <fieldset class="form-group" ng-controller="ProjectController">
+                <label for="exampleSelect1">Project</label>
+                <select ng-init="allProjects()"
+                        ng-model="task.project.projectId" class="form-control"
+                        ng-options="project.projectId as project.name for project in projects"
+                        id="exampleSelect1">
+                </select>
+                <small class="text-muted">Please, choose project.</small>
+            </fieldset>
+
+            <div class="checkbox">
+                <label>
+                    <input ng-model="task.isCompleted" name="isCompleted" type="checkbox"> Completed
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

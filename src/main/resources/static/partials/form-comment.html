@@ -1,0 +1,14 @@
+<div class="card-wrapper" ng-controller="CommentController">
+    <div ng-init="getComment()">
+        <form name="myForm" ng-submit="changeComment()">
+            <input type="hidden" name="userId" ng-model="comment.commentId" value="0">
+            <fieldset class="form-group">
+                <label for="text">Comment</label>
+                <textarea class="form-control" ng-model="comment.text" name="text" id="text"
+                          rows="3"></textarea>
+                <small class="text-muted">Please, enter task description.</small>
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

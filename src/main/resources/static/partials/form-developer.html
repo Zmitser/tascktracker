@@ -1,0 +1,23 @@
+<div class="card-wrapper" ng-controller="ManagerController">
+    <div ng-init="getUser()">
+        <form name="myForm" ng-submit="saveUser()">
+            <input type="hidden" name="userId" ng-model="user.userId" value="0">
+            <fieldset class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" ng-model="user.username"  class="form-control" id="username" placeholder="Enter username">
+                <small class="text-muted">Please, enter your username .</small>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" name="email" ng-model="user.email" class="form-control" id="email" placeholder="Enter email">
+                <small class="text-muted">Please, enter your email.</small>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" ng-model="user.password" class="form-control" id="password" placeholder="Password">
+                <small class="text-muted">Please, enter your password.</small>
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
