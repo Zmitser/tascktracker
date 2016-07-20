@@ -35,7 +35,7 @@
                     <div class="widget-area no-padding blank">
                         <div class="status-upload">
                             <p>{{credentials.username}}</p>
-                            <form ng-submit="postComment()">
+                            <form ng-submit="postComment()" method="post">
                                 <input type="hidden" ng-model="comment.task.taskId">
                                 <textarea ng-model="comment.text" placeholder="What are you doing right now?"></textarea>
                                 <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i>Comment</button>

@@ -8,8 +8,8 @@
                 <th>Project Name</th>
                 <th>Description</th>
                 <th></th>
-                <th ng-show="hasRole('ROLE_MANAGER')"></th>
-                <th ng-show="hasRole('ROLE_MANAGER')"></th>
+                <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -18,9 +18,9 @@
                 <td>{{project.name}}</td>
                 <td>{{project.description}}</td>
                 <td ><a class="btn btn-info btn-sm" href="#project/tasks/{{project.projectId}}">Tasks</a></td>
-                <td ng-show="hasRole('ROLE_MANAGER')" ><a class="btn btn-primary btn-sm"
+                <td ><a class="btn btn-primary btn-sm"
                        href="#/project/{{project.projectId}}">Edit</a></td>
-                <td ng-show="hasRole('ROLE_MANAGER')" >
+                <td >
                     <button  class="btn btn-sm btn-danger"
                             ng-click="removeProject(project.projectId)">Delete
                     </button>

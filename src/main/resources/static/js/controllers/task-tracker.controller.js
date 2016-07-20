@@ -13,6 +13,8 @@ app.controller('ProjectController', function ($scope, $http, $routeParams, $loca
     $scope.removeProject = function (projectId) {
         $http.delete('/rest/manager/projects/project/delete/' + projectId).success(function (data) {
             $scope.refresh();
+        }).error(function () {
+            alert("Acces Denied!")
         });
     };
 
@@ -21,6 +23,8 @@ app.controller('ProjectController', function ($scope, $http, $routeParams, $loca
         if ($routeParams.projectId != undefined && $routeParams.projectId != null) {
             $http.get('/rest/manager/projects/project/' + $routeParams.projectId).success(function (data) {
                 $scope.project = data;
+            }).error(function () {
+                alert("Acces Denied!")
             });
         }
     };
@@ -38,6 +42,8 @@ app.controller('ProjectController', function ($scope, $http, $routeParams, $loca
             'data': project
         }).success(function () {
             $location.path("/projects");
+        }).error(function () {
+            alert("Acces Denied!")
         })
     };
 
@@ -54,7 +60,7 @@ app.controller('TaskController', function ($scope, $http, $routeParams, $locatio
     $scope.allTasks = function () {
         $scope.refresh();
     };
-    
+
     $scope.deleteTask = function (taskId) {
         $http.delete('/rest/manager/tasks/task/delete/' + taskId).success(function () {
             $scope.refresh();
@@ -89,8 +95,26 @@ app.controller('TaskController', function ($scope, $http, $routeParams, $locatio
             'data': task
         }).success(function () {
             $location.path("/projects");
+        }).error(function () {
+            alert("Acces Denied!")
         })
     };
+
+    $scope.changeStatus = function (taskId, isCompleted) {
+        var task = {
+            "isCompleted": ""+isCompleted,
+            "taskId": ""+taskId
+        };
+        $http({
+            'url': '/rest/developer/tasks/task/save',
+            'method': 'POST',
+            'headers': {'Content-Type': 'application/json'},
+            'data': task
+        }).success(function () {
+            $location.path("/projects");
+        })
+    }
+
 
 });
 
@@ -108,12 +132,16 @@ app.controller('ManagerController', function ($scope, $http, $location, $routePa
     $scope.removeUser = function (userId) {
         $http.delete('/rest/manager/users/user/delete/' + userId).success(function () {
             $scope.refresh();
+        }).error(function () {
+            alert("Acces Denied!")
         });
     };
     $scope.getUser = function () {
         if ($routeParams.userId != undefined && $routeParams.userId != null && $routeParams.userId) {
             $http.get('/rest/manager/users/user/' + $routeParams.userId).success(function (data) {
                 $scope.user = data;
+            }).error(function () {
+                alert("Acces Denied!")
             });
         }
     };
@@ -138,6 +166,7 @@ app.controller('ManagerController', function ($scope, $http, $location, $routePa
 
 
 app.controller('CommentController', function ($scope, $window, $http, $routeParams, $location) {
+
     $scope.refresh = function () {
         $http.get('/rest/developer/comments/' + $routeParams.taskId).success(function (data) {
             $scope.comments = data;
@@ -198,6 +227,8 @@ app.controller('CommentController', function ($scope, $window, $http, $routePara
             $scope.comment.text = '';
         })
     };
+
+
 
 });
 

@@ -3,6 +3,7 @@ package com.codexsoft.webapp.web.manager;
 import com.codexsoft.webapp.model.Role;
 import com.codexsoft.webapp.model.User;
 import com.codexsoft.webapp.service.UserService;
+import com.codexsoft.webapp.util.PasswordUtil;
 import com.codexsoft.webapp.util.exception.ValidationException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
@@ -53,6 +54,7 @@ public class ManagerUserRestController {
             user.setRole(Role.ROLE_DEVELOPER);
             user.setIsEnabled(true);
             if (user.getUserId() == null) {
+                user.setPassword(PasswordUtil.encode(user.getPassword()));
                 userService.create(user);
             } else {
                 User existing = userService.findOne(user.getUserId());

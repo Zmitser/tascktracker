@@ -12,4 +12,5 @@ public interface TaskService {
     List<Task> findAllByProjectId(Long projectId);
     void delete(Long taskId);
     void update(Task task);
+    void enable(Long id, boolean completed);
 }

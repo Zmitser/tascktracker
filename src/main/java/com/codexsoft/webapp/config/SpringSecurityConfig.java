@@ -1,33 +1,31 @@
 package com.codexsoft.webapp.config;
 
+import com.codexsoft.webapp.util.PasswordUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import javax.sql.DataSource;
+import javax.annotation.Resource;
 
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private DataSource dataSource;
+    @Resource(name="userService")
+    private UserDetailsService userDetailsService;
+
+
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder builder) throws Exception {
-//        builder
-//                .inMemoryAuthentication()
-//                .withUser("manager").password("manager").roles("MANAGER")
-//                .and().withUser("developer").password("developer").roles("DEVELOPER");
-        builder.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery(
-                        "select username, password, is_enabled from user where username=?")
-                .authoritiesByUsernameQuery(
-                        "select username, role from user where username=?");
+        builder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -46,6 +44,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+    }
+
+
+    @Bean
+    protected PasswordEncoder passwordEncoder(){
+        return PasswordUtil.getPasswordEncoder();
     }
 
 }

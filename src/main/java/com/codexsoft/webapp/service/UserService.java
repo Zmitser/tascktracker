@@ -12,5 +12,6 @@ public interface UserService {
     List<User> findAll();
     void delete(Long taskId);
     void update(User user);
+    User findByUsername(String username);
 
 }

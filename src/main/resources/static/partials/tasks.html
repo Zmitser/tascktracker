@@ -2,13 +2,21 @@
     <h2 class="sub-header">View all tasks on current project</h2>
     <div class="card-deck-wrapper" ng-controller="TaskController">
         <div class="card-deck" ng-init="allTasks()">
-                <div class="card card-inverse card-info  card-block " ng-repeat="task in tasks">
-                    <h4 class="card-title card-inverse">{{task.name}}</h4>
-                    <p class="card-text card-inverse">{{task.description}}</p>
-                    <a href="#/task/{{task.taskId}}" ng-show=""  class="btn btn-success btn-sm">Edit</a>
-                    <a href="#/task/discussion/{{task.taskId}}"  class="btn btn-warning btn-sm">Discussion</a>
-                    <button ng-click="deleteTask(task.taskId)" ng-show=""  class="btn btn-danger btn-sm">Delete</button>
+            <div ng-class="task.isCompleted ? 'card card-inverse card-success card-block' :   'card card-inverse card-info card-block'" ng-repeat="task in tasks">
+                <h4 class="card-title card-inverse">{{task.name}}</h4>
+                <p class="card-text card-inverse">{{task.description}}</p>
+                <a href="#/task/{{task.taskId}}" class="btn btn-success btn-sm">Edit</a>
+                <a href="#/task/discussion/{{task.taskId}}" class="btn btn-warning btn-sm">Discussion</a>
+                <button ng-click="deleteTask(task.taskId)" class="btn btn-danger btn-sm">Delete</button>
+                <button ng-click="showDetails = ! showDetails" class="btn btn-danger btn-sm">Change task status</button>
+                <div class="procedure-details" ng-show="showDetails">
+                    <form name="myForm" method="post" ng-submit="changeStatus(task.taskId, task.isCompleted)">
+                        <input type="hidden" name="taskId" ng-model="task.taskId">
+                        <input ng-model="task.isCompleted" name="isCompleted" type="checkbox">
+                        <button type="submit">Change</button>
+                    </form>
                 </div>
+            </div>
         </div>
     </div>
     <a href="#/task" class="btn btn-success pull-lg-right">Create Task</a>

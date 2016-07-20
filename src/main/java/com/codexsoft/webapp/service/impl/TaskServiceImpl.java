@@ -5,6 +5,7 @@ import com.codexsoft.webapp.repository.TaskRepository;
 import com.codexsoft.webapp.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -37,6 +38,14 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void update(Task task) {
+        repository.save(task);
+    }
+
+    @Override
+    @Transactional
+    public void enable(Long id, boolean completed) {
+        Task task = findOne(id);
+        task.setIsCompleted(completed);
         repository.save(task);
     }
 }
