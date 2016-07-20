@@ -125,7 +125,11 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'manager@manager.by',1,'$2a$06$.SpVm1IVT1nCEkDztV1sp.Ii.2IeexNUOhAABIzWlvyBwdYc/w0i.','ROLE_MANAGER','manager'),(2,'developer@developer.by',1,'$2a$06$8E2gS2pIz4dFVRiyGDWn7.7pDplRahK4Xl0VuYv2MmQqvraUUvy8W','ROLE_DEVELOPER','David'),(3,'developer1@developer.by',1,'$2a$06$oB0Z6p00r1Go6G9jSUYAteL7h1vaeL84q4OIA/xB311dEk1Y7Sn/q','ROLE_DEVELOPER','Nick'),(4,'developer2@developer.by',1,'$2a$06$fhuEUvIXM2DreiJUHHF4zeoiO4vDWz4xIvObbwSnJ3p35xoC7Csom','ROLE_DEVELOPER','John');
+INSERT INTO `user` VALUES
+  (1,'manager@manager.by',1,'$2a$06$.SpVm1IVT1nCEkDztV1sp.Ii.2IeexNUOhAABIzWlvyBwdYc/w0i.','ROLE_MANAGER','manager'),
+  (2,'developer@developer.by',1,'$2a$06$fWY/uACxYisSkDzJJq6aE.h94q8LAYZA3tMxp5dg2zh1SfRhaMR5S','ROLE_DEVELOPER','David'),
+  (3,'developer1@developer.by',1,'$2a$06$oB0Z6p00r1Go6G9jSUYAteL7h1vaeL84q4OIA/xB311dEk1Y7Sn/q','ROLE_DEVELOPER','Nick'),
+  (4,'developer2@developer.by',1,'$2a$06$fhuEUvIXM2DreiJUHHF4zeoiO4vDWz4xIvObbwSnJ3p35xoC7Csom','ROLE_DEVELOPER','John');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
