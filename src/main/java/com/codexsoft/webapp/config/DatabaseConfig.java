@@ -2,13 +2,12 @@ package com.codexsoft.webapp.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
-/**
- * Created by Lenovo on 20.07.2016.
- */
+@Configuration
 public class DatabaseConfig {
     @Bean
     @Primary
