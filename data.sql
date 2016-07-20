@@ -27,6 +27,7 @@ CREATE TABLE `comment` (
   `comment_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `text` varchar(255) DEFAULT NULL,
   `task_id` int(11) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`comment_id`),
   KEY `FK_2d9ern8bvaarimfayk9083iog` (`task_id`),
   CONSTRAINT `FK_2d9ern8bvaarimfayk9083iog` FOREIGN KEY (`task_id`) REFERENCES `task` (`task_id`)
@@ -39,7 +40,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (9,'gggggggggggggggggg',1),(10,'dsdsad',2),(11,'czcxz',2),(13,'ccscssssssss',1),(14,'cczxcxz',1),(15,'sdsad',8);
+INSERT INTO `comment` VALUES (9,'gggggggggggggggggg',1,2),(10,'dsdsad',2,2),(11,'czcxz',2,1),(13,'ccscssssssss',1,3),(14,'cczxcxz',1,2),(15,'sdsad',8,2);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,4 +139,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-20  3:42:37
+-- Dump completed on 2016-07-20 10:09:43

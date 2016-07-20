@@ -3,6 +3,7 @@ package com.codexsoft.webapp.web.developer;
 import com.codexsoft.webapp.LoggedUser;
 import com.codexsoft.webapp.model.Comment;
 import com.codexsoft.webapp.model.Task;
+import com.codexsoft.webapp.model.User;
 import com.codexsoft.webapp.service.CommentService;
 import com.codexsoft.webapp.service.TaskService;
 import com.codexsoft.webapp.service.UserService;
@@ -62,9 +63,9 @@ public class DeveloperCommentRestController {
         try {
             if (comment.getCommentId() == null) {
                 Task task = taskService.findOne(comment.getTask().getTaskId());
-                userService.findByUsername(LoggedUser.get().getUsername());
+                User byUsername = userService.findByUsername(LoggedUser.get().getUsername());
                 comment.setTask(task);
-                comment.setUser(userService.findByUsername(LoggedUser.get().getUsername()));
+                comment.setUser(byUsername);
                 commentService.create(comment);
             } else {
                 Comment existing = commentService.findOne(comment.getCommentId());

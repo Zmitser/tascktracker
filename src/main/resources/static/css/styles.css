@@ -133,9 +133,6 @@ body {
 .card-wrapper{
     margin: 20px;
 }
-.card {
-    overflow: hidden;
-}
 
 .card-block .rotate {
     z-index: 8;
